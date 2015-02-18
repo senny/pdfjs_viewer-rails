@@ -1,0 +1,10 @@
+<h1>pdfjs_viewer-rails</h1>
+<p>
+  This gem offers different ways to integrate the PDF.js viewer into a Rails application.
+</p>
+
+<ul>
+<li><%= link_to "Open sample.pdf using the full viewer", pdfjs.full_path(file: "/sample.pdf") %></li>
+<li><%= link_to "Open sample.pdf using the minimal viewer", pdfjs.minimal_path(file: "/sample.pdf") %></li>
+<li><%= link_to "Open sample.pdf using the pdfjs_viewer helper", helper_path %></li>
+</ul>

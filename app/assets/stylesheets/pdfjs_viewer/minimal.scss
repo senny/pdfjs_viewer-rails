@@ -1,0 +1,31 @@
+#pdfjs_viewer-minimal {
+  div.toolbar { display: none; }
+
+  #scaleSelectContainer { display: none; }
+  #secondaryToolbarToggle { display: none; }
+
+  #toolbarViewerLeft { display: none; }
+  #toolbarViewerRight { display: none; }
+
+  #viewFind { display: none; }
+
+  #viewAttachments { display: none; }
+
+  .openFile { display: none; }
+
+  .download { display: none; }
+
+  .bookmark { display: none; }
+
+  .secondaryToolbar { display: none; }
+
+
+  #viewerContainer, #mainContainer {
+    background-color: white;
+  }
+
+  #toolbarContainer {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
