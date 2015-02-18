@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdfjs_viewer-rails (0.0.1)
+    pdfjs_viewer-rails (0.0.2)
       rails (~> 4.2.0)
       sass-rails (~> 5.0)
 
