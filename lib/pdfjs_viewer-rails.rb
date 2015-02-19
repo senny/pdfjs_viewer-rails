@@ -7,7 +7,7 @@ module PdfjsViewer
       isolate_namespace PdfjsViewer
 
       initializer 'pdfjs_viewer-rails.load_static_assets' do |app|
-        app.middleware.use ::ActionDispatch::Static, "#{root}/public"
+        app.middleware.unshift ::ActionDispatch::Static, "#{root}/public"
       end
 
       initializer "pdfjs_viewer-rails.view_helpers" do
