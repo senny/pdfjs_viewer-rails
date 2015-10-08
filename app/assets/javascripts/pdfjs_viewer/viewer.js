@@ -3179,6 +3179,7 @@ var PageView = function pageView(container, id, scale, defaultViewport,
         return false;
       };
       if (dest) {
+        link.removeAttribute("target");
         link.className = 'internalLink';
       }
     }
@@ -3189,6 +3190,7 @@ var PageView = function pageView(container, id, scale, defaultViewport,
         linkService.executeNamedAction(action);
         return false;
       };
+      link.removeAttribute("target");
       link.className = 'internalLink';
     }
 
