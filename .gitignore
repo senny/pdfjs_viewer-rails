@@ -9,3 +9,5 @@ test/dummy/.sass-cache
 
 /test/sandbox/*
 !/test/sandbox/.gitkeep
+
+.DS_Store
