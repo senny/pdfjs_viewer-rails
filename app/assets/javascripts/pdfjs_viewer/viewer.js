@@ -1985,7 +1985,7 @@ var PresentationMode = {
     // Ensure that the correct page is scrolled into view when entering
     // Presentation Mode, by waiting until fullscreen mode in enabled.
     // Note: This is only necessary in non-Mozilla browsers.
-   /* setTimeout(function enterPresentationModeTimeout() {
+    setTimeout(function enterPresentationModeTimeout() {
       PDFViewerApplication.page = this.args.page;
       PDFViewerApplication.setScale('page-fit', true);
     }.bind(this), 0);
@@ -1998,7 +1998,7 @@ var PresentationMode = {
     HandTool.enterPresentationMode();
     this.contextMenuOpen = false;
     this.container.setAttribute('contextmenu', 'viewerContextMenu');
-  }*/,
+  },
 
   exit: function presentationModeExit() {
     var page = PDFViewerApplication.page;
@@ -2100,12 +2100,12 @@ var PresentationMode = {
       PresentationMode.exit();
     }
   }
-
+  /*
   window.addEventListener('fullscreenchange', presentationModeChange, false);
   window.addEventListener('mozfullscreenchange', presentationModeChange, false);
   window.addEventListener('webkitfullscreenchange', presentationModeChange,
                           false);
-  window.addEventListener('MSFullscreenChange', presentationModeChange, false);
+  window.addEventListener('MSFullscreenChange', presentationModeChange, false);*/
 })();
 
 
