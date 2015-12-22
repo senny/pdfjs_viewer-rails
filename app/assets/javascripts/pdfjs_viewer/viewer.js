@@ -1909,10 +1909,11 @@ var PresentationMode = {
   },
 
   get isFullscreen() {
-    return (document.fullscreenElement ||
+    /*return (document.fullscreenElement ||
             document.mozFullScreen ||
             document.webkitIsFullScreen ||
-            document.msFullscreenElement);
+            document.msFullscreenElement);*/
+    return false;
   },
 
   /**
@@ -6395,11 +6396,11 @@ document.addEventListener('pagerendered', function (e) {
 }, true);
 
 window.addEventListener('presentationmodechanged', function (e) {
-  var active = e.detail.active;
+  /*var active = e.detail.active;
   var switchInProgress = e.detail.switchInProgress;
   PDFViewerApplication.pdfViewer.presentationModeState =
     switchInProgress ? PresentationModeState.CHANGING :
-    active ? PresentationModeState.FULLSCREEN : PresentationModeState.NORMAL;
+    active ? PresentationModeState.FULLSCREEN : PresentationModeState.NORMAL;*/
 });
 
 function updateViewarea() {
