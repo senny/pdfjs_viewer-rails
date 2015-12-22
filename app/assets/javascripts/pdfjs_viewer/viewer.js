@@ -891,9 +891,9 @@ var PDFFindBar = (function PDFFindBarClosure() {
 
     // Add event listeners to the DOM elements.
     var self = this;
-    /*this.toggleButton.addEventListener('click', function() {
+    this.toggleButton.addEventListener('click', function() {
       self.toggle();
-    });*/
+    });
 
     this.findField.addEventListener('input', function() {
       self.dispatchEvent('');
@@ -1909,11 +1909,10 @@ var PresentationMode = {
   },
 
   get isFullscreen() {
-    /*return (document.fullscreenElement ||
+    /* return (document.fullscreenElement ||
             document.mozFullScreen ||
             document.webkitIsFullScreen ||
-            document.msFullscreenElement);*/
-    return false;
+            document.msFullscreenElement); */
   },
 
   /**
@@ -6396,11 +6395,11 @@ document.addEventListener('pagerendered', function (e) {
 }, true);
 
 window.addEventListener('presentationmodechanged', function (e) {
-  /*var active = e.detail.active;
+  var active = e.detail.active;
   var switchInProgress = e.detail.switchInProgress;
   PDFViewerApplication.pdfViewer.presentationModeState =
     switchInProgress ? PresentationModeState.CHANGING :
-    active ? PresentationModeState.FULLSCREEN : PresentationModeState.NORMAL;*/
+    active ? PresentationModeState.FULLSCREEN : PresentationModeState.NORMAL;
 });
 
 function updateViewarea() {
