@@ -1909,10 +1909,10 @@ var PresentationMode = {
   },
 
   get isFullscreen() {
-    /* return (document.fullscreenElement ||
+    return (document.fullscreenElement ||
             document.mozFullScreen ||
             document.webkitIsFullScreen ||
-            document.msFullscreenElement); */
+            document.msFullscreenElement);
   },
 
   /**
