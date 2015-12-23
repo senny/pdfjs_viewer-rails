@@ -1,6 +1,7 @@
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab: */
 /* Copyright 2012 Mozilla Foundation
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1908,10 +1909,10 @@ var PresentationMode = {
   },
 
   get isFullscreen() {
-    /*return (document.fullscreenElement ||
+    return (document.fullscreenElement ||
             document.mozFullScreen ||
             document.webkitIsFullScreen ||
-            document.msFullscreenElement);*/
+            document.msFullscreenElement);
   },
 
   /**
@@ -1942,12 +1943,11 @@ var PresentationMode = {
   request: function presentationModeRequest() {
     if (!PDFViewerApplication.supportsFullscreen || this.isFullscreen ||
         !this.viewer.hasChildNodes()) {
-      /*return false;*/
-      return true;
+      return false;
     }
     this._setSwitchInProgress();
     this._notifyStateChange();
-    /*
+
     if (this.container.requestFullscreen) {
       this.container.requestFullscreen();
     } else if (this.container.mozRequestFullScreen) {
@@ -1958,7 +1958,7 @@ var PresentationMode = {
       this.container.msRequestFullscreen();
     } else {
       return false;
-    }*/
+    }
 
     this.args = {
       page: PDFViewerApplication.page,
@@ -2100,12 +2100,12 @@ var PresentationMode = {
       PresentationMode.exit();
     }
   }
-  /*
+
   window.addEventListener('fullscreenchange', presentationModeChange, false);
   window.addEventListener('mozfullscreenchange', presentationModeChange, false);
   window.addEventListener('webkitfullscreenchange', presentationModeChange,
                           false);
-  window.addEventListener('MSFullscreenChange', presentationModeChange, false);*/
+  window.addEventListener('MSFullscreenChange', presentationModeChange, false);
 })();
 
 
