@@ -3,19 +3,15 @@
 <!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
     http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 Adobe CMap resources are covered by their own copyright and license:
 http://sourceforge.net/adobe/cmap/wiki/License/
 -->
@@ -24,6 +20,16 @@ http://sourceforge.net/adobe/cmap/wiki/License/
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
+
+    <meta property="og:title" content="UBooks" />
+    <meta property="og:image" content="<%=@book.cover_image %>" />
+    <meta property="og:image:width" content="200"/>
+    <meta property="og:image:height" content="300"/>
+    <meta property="og:site_name" content="UBooks"/>
+    <meta property="og:url" content="http://www.ub.com.pe" />
+    <meta property="og:description" content="UBooks es la nueva plataforma en español para subir y compartir material academico." />
+    <meta property="fb:app_id" content="1628671147403843" />
+
     <title><%= title %></title>
 
     <%= stylesheet_link_tag "pdfjs_viewer/application" %>
@@ -339,7 +345,6 @@ http://sourceforge.net/adobe/cmap/wiki/License/
   height: 100%;
   width: 100%;
   z-index: 9999999;
-
   display: block;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
@@ -352,7 +357,6 @@ http://sourceforge.net/adobe/cmap/wiki/License/
     display: none;
   }
 }
-
 #mozPrintCallback-shim .mozPrintCallback-dialog-box {
   display: inline-block;
   margin: -50px auto 0;
@@ -361,15 +365,11 @@ http://sourceforge.net/adobe/cmap/wiki/License/
   left: 0;
   min-width: 220px;
   max-width: 400px;
-
   padding: 9px;
-
   border: 1px solid hsla(0, 0%, 0%, .5);
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-
   background-color: #474747;
-
   color: hsl(0, 0%, 85%);
   font-size: 16px;
   line-height: 20px;
