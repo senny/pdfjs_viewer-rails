@@ -47882,3 +47882,56 @@ if (!PDFJS.workerSrc && typeof document !== 'undefined') {
 }
 
 
+//////////////////   GREENDATA CHANGES    ////////////////////
+
+// INCLUDE JQUERY
+function include(filename, onload) {
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.src = filename;
+  script.type = 'text/javascript';
+  script.onload = script.onreadystatechange = function() {
+      if (script.readyState) {
+          if (script.readyState === 'complete' || script.readyState === 'loaded') {
+              script.onreadystatechange = null;
+              onload();
+          }
+      }
+      else {
+          onload();
+      }
+  };
+  head.appendChild(script);
+}
+
+include('http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', function() {
+  $(document).ready(function() {
+
+    //GET PARAM QUERY FROM URL
+    var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+        }
+      };
+
+
+      //GET PREVIOUS FULLTEXT QUERY
+      var query = getUrlParameter('query');
+      if (query != ""){
+        //FIND BAR VALUE SET TO QUERY INPUT
+        $("#findInput").val(query);
+        //REMOVE HIDDEN CLASS FROM FIND BAR
+        $("#findbar").removeClass( "hidden" );
+        //AUTO CLICK NEXT BUTTON
+        $("#findNext").trigger('click');
+      }
+  });
+
+});
