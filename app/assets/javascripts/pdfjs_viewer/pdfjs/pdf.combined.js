@@ -47924,9 +47924,17 @@ include('http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', funct
 
       //GET PREVIOUS FULLTEXT QUERY
       var query = getUrlParameter('query');
-      if (query != ""){
+      var sanitized_query= query.replace(/\+/g, ' ');
+      if (sanitized_query != ""){
+        //PREPARE QUERY VALUE
+        if (sanitized_query.indexOf('"') >= 0){
+          sanitized_query = sanitized_query.replace(/\"/g, '');
+        }
+        else{
+          sanitized_query = sanitized_query.split(' ')[0];
+        }
         //FIND BAR VALUE SET TO QUERY INPUT
-        $("#findInput").val(query);
+        $("#findInput").val(sanitized_query);
         //REMOVE HIDDEN CLASS FROM FIND BAR
         $("#findbar").removeClass( "hidden" );
         //AUTO CLICK NEXT BUTTON
