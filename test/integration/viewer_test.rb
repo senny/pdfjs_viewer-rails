@@ -41,7 +41,7 @@ class ViewerTest < ActionDispatch::IntegrationTest
   private
   def assert_rendered_pdf(output, screenshot:)
     puts output.scan(/Warning:.+$/)
-    assert_match /PDF d6ea82b9661e58030e99729d198a353a/, output
+    assert_match(/PDF d6ea82b9661e58030e99729d198a353a/, output)
     page.save_screenshot screenshot, full: true
   end
 
