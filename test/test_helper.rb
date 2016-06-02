@@ -20,7 +20,10 @@ require 'capybara/poltergeist'
 require "timeout"
 
 SANDBOX_PATH = Pathname.new(File.expand_path("sandbox", __dir__))
-SANDBOX_PATH.each_child { |screenshot| screenshot.delete }
+SANDBOX_PATH.each_child do |screenshot|
+  next if screenshot.basename.to_s == '.gitkeep'
+  screenshot.delete
+end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
