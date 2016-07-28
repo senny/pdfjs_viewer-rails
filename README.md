@@ -12,7 +12,7 @@ gem 'pdfjs_viewer-rails'
 
 ## Viewer Styles
 
-This gem ships with two viewer styles:
+This gem ships with three viewer styles:
 
 **full**
 
@@ -20,6 +20,14 @@ This gem ships with two viewer styles:
   <img
   src="https://raw.githubusercontent.com/senny/pdfjs_viewer-rails/master/doc/files/viewer_full.png"
   alt="full style"/>
+</p>
+
+**minimal**
+
+<p align="center">
+  <img
+  src="https://raw.githubusercontent.com/senny/pdfjs_viewer-rails/master/doc/files/viewer_reduced.png"
+  alt="reduced style"/>
 </p>
 
 **minimal**

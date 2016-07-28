@@ -4,7 +4,8 @@
 </p>
 
 <ul>
-<li><%= link_to "Open sample.pdf using the full viewer", pdfjs.full_path(file: "/sample.pdf") %></li>
-<li><%= link_to "Open sample.pdf using the minimal viewer", pdfjs.minimal_path(file: "/sample.pdf") %></li>
-<li><%= link_to "Open sample.pdf using the pdfjs_viewer helper", helper_path %></li>
+  <li><%= link_to "Open sample.pdf using the full viewer", pdfjs.full_path(file: "/sample.pdf") %></li>
+  <li><%= link_to "Open sample.pdf using the reduced viewer", pdfjs.reduced_path(file: "/sample.pdf") %></li>
+  <li><%= link_to "Open sample.pdf using the minimal viewer", pdfjs.minimal_path(file: "/sample.pdf") %></li>
+  <li><%= link_to "Open sample.pdf using the pdfjs_viewer helper", helper_path %></li>
 </ul>

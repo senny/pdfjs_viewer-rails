@@ -12,6 +12,7 @@
  *
  *= require pdfjs_viewer/pdfjs/viewer
  *= require pdfjs_viewer/minimal
+ *= require pdfjs_viewer/reduced
  *= require pdfjs_viewer/full
  *= require_self
  */
