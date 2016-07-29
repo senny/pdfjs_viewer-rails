@@ -49,6 +49,15 @@ class ViewerTest < ActionDispatch::IntegrationTest
     assert_rendered_pdf output, screenshot: SANDBOX_PATH + "helper.png"
   end
 
+  test "ENV variable is set in JS" do
+    visit "/"
+    click_on "minimal viewer"
+    assert_equal [
+                  "http://example.com",
+                  "http://random.example.com"
+                 ], page.evaluate_script("HOSTED_VIEWER_ORIGINS")
+  end
+
   private
   def assert_rendered_pdf(output, screenshot:)
     puts output.scan(/Warning:.+$/)
