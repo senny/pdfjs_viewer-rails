@@ -14,3 +14,4 @@
 //= require pdfjs_viewer/pdfjs/pdf.combined
 //= require pdfjs_viewer/pdfjs/l10n
 //= require pdfjs_viewer/viewer
+//= require pdfjs_viewer/configurations
