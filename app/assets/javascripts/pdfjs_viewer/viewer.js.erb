@@ -7145,7 +7145,9 @@ var HOSTED_VIEWER_ORIGINS = <%= ENV.fetch("PDFJS_VIEWER_ORIGINS", "").split(",")
 
 function validateFileURL(file) {
   try {
-    var viewerOrigin = window.location.origin;
+    // IE workaround because window.location.origin
+    // is not available in < IE 11
+    var viewerOrigin = new URL(window.location.href).origin || 'null';
     if (HOSTED_VIEWER_ORIGINS.indexOf(viewerOrigin) >= 0) {
       // Hosted or local viewer, allow for any file locations
       return;
