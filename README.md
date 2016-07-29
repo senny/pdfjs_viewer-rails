@@ -70,6 +70,20 @@ an iframe.
 
 NOTE: The helper will render a full HTML document and should not be used in a layout.
 
+### Verbosity of PDF.js
+
+The verbosity of PDF.js can be set with:
+
+```
+$ export PDFJS_VIEWER_VERBOSITY=warnings
+```
+
+Verbosity levels:
+
+* errors (default)
+* warnings
+* infos
+
 ## Development
 
 Tests can be executed with:

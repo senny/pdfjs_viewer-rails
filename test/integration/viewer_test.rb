@@ -49,6 +49,20 @@ class ViewerTest < ActionDispatch::IntegrationTest
     assert_rendered_pdf output, screenshot: SANDBOX_PATH + "helper.png"
   end
 
+  test "pdfjs viewer verbosity is set with ENV variable" do
+    begin
+      ENV["PDFJS_VIEWER_VERBOSITY"] = "warnings"
+      output = capture(:stdout) do
+        visit "/"
+        click_on "full viewer"
+        assert_equal 1, page.evaluate_script("PDFJS.verbosity")
+      end
+      assert_includes output, "Warning: Setting up fake worker"
+    ensure
+      ENV.delete("PDFJS_VIEWER_VERBOSITY")
+    end
+  end
+
   private
   def assert_rendered_pdf(output, screenshot:)
     puts output.scan(/Warning:.+$/)
