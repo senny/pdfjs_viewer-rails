@@ -50,12 +50,17 @@ class ViewerTest < ActionDispatch::IntegrationTest
   end
 
   test "ENV variable is set in JS" do
-    visit "/"
-    click_on "minimal viewer"
-    assert_equal [
-                  "http://example.com",
-                  "http://random.example.com"
-                 ], page.evaluate_script("HOSTED_VIEWER_ORIGINS")
+    begin
+      ENV["PDFJS_VIEWER_ORIGINS"] = "http://example.com,http://random.example.com"
+      visit "/"
+      click_on "minimal viewer"
+      assert_equal [
+                    "http://example.com",
+                    "http://random.example.com"
+                   ], page.evaluate_script("HOSTED_VIEWER_ORIGINS")
+    ensure
+      ENV.delete("PDFJS_VIEWER_ORIGINS")
+    end
   end
 
   private
