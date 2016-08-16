@@ -7141,11 +7141,11 @@ var PDFViewerApplication = {
 };
 window.PDFView = PDFViewerApplication; // obsolete name, using it as an alias
 
-
-var HOSTED_VIEWER_ORIGINS = ['null',
-  'http://mozilla.github.io', 'https://mozilla.github.io'];
+var HOSTED_VIEWER_ORIGINS = <%= ENV.fetch("PDFJS_VIEWER_ORIGINS", "").split(",").inspect %>;
 function validateFileURL(file) {
   try {
+    // IE workaround because window.location.origin
+    // is not available in < IE 11
     var viewerOrigin = new URL(window.location.href).origin || 'null';
     if (HOSTED_VIEWER_ORIGINS.indexOf(viewerOrigin) >= 0) {
       // Hosted or local viewer, allow for any file locations
