@@ -22,7 +22,7 @@ This gem ships with three viewer styles:
   alt="full style"/>
 </p>
 
-**minimal**
+**reduced**
 
 <p align="center">
   <img
