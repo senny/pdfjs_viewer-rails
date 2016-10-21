@@ -2,6 +2,9 @@ require "pdfjs_viewer-rails/version"
 require "pdfjs_viewer-rails/helpers"
 
 module PdfjsViewer
+
+  mattr_accessor :custom_stylesheet
+
   module Rails
     class Engine < ::Rails::Engine
       isolate_namespace PdfjsViewer

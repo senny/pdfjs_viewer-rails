@@ -30,8 +30,11 @@ See https://github.com/adobe-type-tools/cmap-resources
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= title %></title>
 
-
     <%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
+
+    <% if PdfjsViewer.custom_stylesheet.present? %>
+      <%= stylesheet_link_tag "#{PdfjsViewer.custom_stylesheet}", media: 'all' %>
+    <% end %>
 
     <!-- This snippet is used in production (included from viewer.html) -->
     <link rel="resource" type="application/l10n" href="/pdfjs/web/locale/locale.properties"/>

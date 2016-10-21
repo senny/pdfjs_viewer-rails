@@ -70,6 +70,22 @@ an iframe.
 
 NOTE: The helper will render a full HTML document and should not be used in a layout.
 
+### Custom stylesheet
+
+To overwrite some styles in order to get a branded viewer, you can load a custom stylesheet:
+
+```ruby
+# initializers/pdfjs_viewer.rb
+
+PdfjsViewer.custom_stylesheet = 'pdfjs'
+```
+
+Prerequisites
+
+* `assets/stylesheets/pdfjs.css` must be created
+* `pdfjs.css` must be manually added to your precompiled assets (`Rails.application.config.assets.precompile`)
+
+
 ## Development
 
 Tests can be executed with:
