@@ -1,0 +1,46 @@
+#pdfjs_viewer-netsoft {
+  .openFile { display: none;}
+
+  .bookmark { display: none; }
+
+  .outerCenter { display: none; }
+
+  .download { display: none; }
+
+  .pdfViewer {
+    padding-bottom: 20px;
+  }
+
+  #toolbarViewerLeft {
+    .toolbarButtonSpacer {
+      display: none;
+    }
+  }
+
+  #secondaryToolbarToggle {
+    display: none;
+  }
+
+  .verticalToolbarSeparator {
+    display: none;
+  }
+
+  .sidebarOpen {
+    .hiddenLargeView {
+      &.presentationMode {
+        display: block;
+      }
+    }
+    .hiddenMediumView {
+      &.print {
+        display: block;
+      }
+    }
+  }
+  #sidebarContent {
+    top: 0;
+  }
+  #toolbarSidebar {
+    display: none;
+  }
+}
