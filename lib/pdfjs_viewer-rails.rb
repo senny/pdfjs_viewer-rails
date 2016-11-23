@@ -7,7 +7,11 @@ module PdfjsViewer
   mattr_accessor :hosted_viewer_origins do
     ['null', 'http://mozilla.github.io', 'https://mozilla.github.io']
   end
-  
+
+  mattr_accessor :disable_range do
+    false
+  end
+
   module Rails
     class Engine < ::Rails::Engine
       isolate_namespace PdfjsViewer
