@@ -5,6 +5,9 @@ module PdfjsViewer
     def full
     end
 
+    def netsoft
+    end
+
     def minimal
     end
   end

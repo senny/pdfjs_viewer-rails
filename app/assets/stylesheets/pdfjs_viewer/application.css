@@ -14,5 +14,6 @@
  *= require pdfjs_viewer/minimal
  *= require pdfjs_viewer/reduced
  *= require pdfjs_viewer/full
+ *= require pdfjs_viewer/netsoft
  *= require_self
  */
