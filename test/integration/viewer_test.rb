@@ -51,13 +51,16 @@ class ViewerTest < ActionDispatch::IntegrationTest
 
   test "pdfjs viewer verbosity is set with ENV variable" do
     begin
-      ENV["PDFJS_VIEWER_VERBOSITY"] = "warnings"
-      output = capture(:stdout) do
+      {
+        errors: 0,
+        warnings: 1,
+        infos: 5
+      }.each do |level, number|
+        ENV["PDFJS_VIEWER_VERBOSITY"] = level.to_s
         visit "/"
         click_on "full viewer"
-        assert_equal 1, page.evaluate_script("PDFJS.verbosity")
+        assert_equal number, page.evaluate_script("PDFJS.verbosity")
       end
-      assert_includes output, "Warning: Setting up fake worker"
     ensure
       ENV.delete("PDFJS_VIEWER_VERBOSITY")
     end
@@ -65,8 +68,7 @@ class ViewerTest < ActionDispatch::IntegrationTest
 
   private
   def assert_rendered_pdf(output, screenshot:)
-    puts output.scan(/Warning:.+$/)
-    assert_match(/PDF d6ea82b9661e58030e99729d198a353a/, output)
+    assert_match(/PDF a0f29a2f4968123b2e931593605583c8/, output)
     page.save_screenshot screenshot, full: true
   end
 
