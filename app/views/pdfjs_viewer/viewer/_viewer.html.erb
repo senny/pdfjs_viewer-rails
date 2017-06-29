@@ -1,4 +1,5 @@
 <% title = local_assigns[:title] || "PDF.js viewer" %>
+<% pdf_url = local_assigns[:pdf_url] %>
 
 <!DOCTYPE html>
 <!--
@@ -28,20 +29,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors") %>">
-    <title><%= title %></title>
-
-    <%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
-
-    <!-- This snippet is used in production (included from viewer.html) -->
-    <link rel="resource" type="application/l10n" href="/pdfjs/web/locale/locale.properties"/>
-
-    <% if local_assigns[:pdf_url] %>
-      <script type="text/javascript">
-        window.resourceURL = "<%= pdf_url %>";
-      </script>
-    <% end %>
-    <%= javascript_include_tag "pdfjs_viewer/application" %>
+    <%= render "pdfjs_viewer/viewer/head", title: title, pdf_url: pdf_url %>
   </head>
 
   <body tabindex="1" class="loadingInProgress" id="pdfjs_viewer-<%= style %>">
@@ -347,84 +335,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
-    <div id="mozPrintCallback-shim" hidden>
-  <style>
-@media print {
-  #printContainer div {
-    page-break-after: always;
-    page-break-inside: avoid;
-  }
-}
-  </style>
-  <style scoped>
-#mozPrintCallback-shim {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999999;
-
-  display: block;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-#mozPrintCallback-shim[hidden] {
-  display: none;
-}
-@media print {
-  #mozPrintCallback-shim {
-    display: none;
-  }
-}
-
-#mozPrintCallback-shim .mozPrintCallback-dialog-box {
-  display: inline-block;
-  margin: -50px auto 0;
-  position: relative;
-  top: 45%;
-  left: 0;
-  min-width: 220px;
-  max-width: 400px;
-
-  padding: 9px;
-
-  border: 1px solid hsla(0, 0%, 0%, .5);
-  border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-
-  background-color: #474747;
-
-  color: hsl(0, 0%, 85%);
-  font-size: 16px;
-  line-height: 20px;
-}
-#mozPrintCallback-shim .progress-row {
-  clear: both;
-  padding: 1em 0;
-}
-#mozPrintCallback-shim progress {
-  width: 100%;
-}
-#mozPrintCallback-shim .relative-progress {
-  clear: both;
-  float: right;
-}
-#mozPrintCallback-shim .progress-actions {
-  clear: both;
-}
-  </style>
-  <div class="mozPrintCallback-dialog-box">
-    <!-- TODO: Localise the following strings -->
-    Preparing document for printing...
-    <div class="progress-row">
-      <progress value="0" max="100"></progress>
-      <span class="relative-progress">0%</span>
-    </div>
-    <div class="progress-actions">
-      <input type="button" value="Cancel" class="mozPrintCallback-cancel">
-    </div>
-  </div>
-</div>
+    <%= render "pdfjs_viewer/viewer/printcontainer" %>
   </body>
 </html>

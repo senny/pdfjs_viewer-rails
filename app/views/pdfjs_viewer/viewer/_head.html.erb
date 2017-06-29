@@ -1,0 +1,14 @@
+<meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors") %>">
+<title><%= title %></title>
+
+<%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
+
+<!-- This snippet is used in production (included from viewer.html) -->
+<link rel="resource" type="application/l10n" href="/pdfjs/web/locale/locale.properties"/>
+
+<% if local_assigns[:pdf_url] %>
+  <script type="text/javascript">
+    window.resourceURL = "<%= pdf_url %>";
+  </script>
+<% end %>
+<%= javascript_include_tag "pdfjs_viewer/application" %>

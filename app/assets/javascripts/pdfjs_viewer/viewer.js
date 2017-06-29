@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 'use strict';
-var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
+/*
+  Patch for pdfjs-viewer-rails
+ */
+var DEFAULT_URL = window.resourceURL;
 ;
 var pdfjsWebLibs;
 {
@@ -5616,9 +5619,9 @@ var pdfjsWebLibs;
    var DEFAULT_SCALE_DELTA = 1.1;
    var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
    function configure(PDFJS) {
-    PDFJS.imageResourcesPath = './images/';
-    PDFJS.workerSrc = '../build/pdf.worker.js';
-    PDFJS.cMapUrl = '../web/cmaps/';
+    PDFJS.imageResourcesPath = '/pdfjs/web/images/';
+    PDFJS.workerSrc = '/pdfjs/web/pdf.worker.js';
+    PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
     PDFJS.cMapPacked = true;
    }
    var DefaultExernalServices = {
