@@ -1,5 +1,7 @@
 # pdfjs_viewer-rails
 
+[![Build Status](https://travis-ci.org/senny/pdfjs_viewer-rails.svg?branch=master)](https://travis-ci.org/senny/pdfjs_viewer-rails)
+
 ## Installation
 
 Add this line to your application's Gemfile:
