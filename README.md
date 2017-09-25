@@ -115,6 +115,33 @@ and then access them:
 <%= tag.meta name: "something", content: something %>
 ```
 
+### Setting up CORS
+
+If you plan to load PDFs from that are hosted on another domain from the
+PDF.js viewer, you may need to set up a Cross-Origin Resource Sharing (CORS)
+Policy to allow PDF.js to read PDFs from your domain. If you're serving PDFs
+straight from Amazon S3 (e.g. `bucket.s3-us-west-1.amazonaws.com`), you will
+need to add a CORS policy to the S3 bucket. This CORS configuration has been
+tested on S3:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01">
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>HEAD</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>Range</AllowedHeader>
+        <AllowedHeader>Authorization</AllowedHeader>
+        <ExposeHeader>Accept-Ranges</ExposeHeader>
+        <ExposeHeader>Content-Encoding</ExposeHeader>
+        <ExposeHeader>Content-Length</ExposeHeader>
+        <ExposeHeader>Content-Range</ExposeHeader>
+    </CORSRule>
+</CORSConfiguration>
+```
+
 ## Development
 
 Tests can be executed with:
