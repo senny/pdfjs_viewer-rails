@@ -86,6 +86,35 @@ Verbosity levels:
 * warnings
 * infos
 
+### Customizing the viewer
+
+If you're not happy with the 3 different styles with which pdfjs_viewer-rails is shipped, you can make your own adjustments by creating a file in `app/views/pdfjs_viewer/viewer/_extra_head.html.erb`. This file will be appended to the viewer's `<head>` tag.
+
+So for example, if you'd like to hide the print icon:
+
+```erb
+<!-- app/views/pdfjs_viewer/viewer/_extra_head.html.erb -->
+
+<style>
+  #print { display: none; }
+</style>
+```
+
+NOTE: You can use the parameters you passed into `pdfjs_viewer` (if you're using the helper):
+
+```erb
+<!-- Somewhere in a view in your project -->
+<%= pdfjs_viewer style: "reduced", something: "sick!" %>
+```
+
+and then access them:
+
+```erb
+<!-- app/views/pdfjs_viewer/viewer/_extra_head.html.erb -->
+
+<%= tag.meta name: "something", content: something %>
+```
+
 ## Development
 
 Tests can be executed with:
