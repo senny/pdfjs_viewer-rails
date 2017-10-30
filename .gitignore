@@ -11,3 +11,6 @@ test/dummy/.sass-cache
 !/test/sandbox/.gitkeep
 
 .ruby-version
+
+Gemfile.lock
+gemfiles/*.lock

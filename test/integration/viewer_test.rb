@@ -49,10 +49,36 @@ class ViewerTest < ActionDispatch::IntegrationTest
     assert_rendered_pdf output, screenshot: SANDBOX_PATH + "helper.png"
   end
 
+  test "extra_head is rendered into the head of the viewer" do
+    visit "/"
+    capture(:stdout) do
+      click_on "helper"
+      assert_equal "1", find('meta[name="example"]', visible: false)[:content]
+    end
+  end
+
+  test "pdfjs viewer verbosity is set with ENV variable" do
+    begin
+      {
+        errors: 0,
+        warnings: 1,
+        infos: 5
+      }.each do |level, number|
+        ENV["PDFJS_VIEWER_VERBOSITY"] = level.to_s
+        capture(:stdout) do
+          visit "/"
+          click_on "full viewer"
+        end
+        assert_equal number, page.evaluate_script("PDFJS.verbosity")
+      end
+    ensure
+      ENV.delete("PDFJS_VIEWER_VERBOSITY")
+    end
+  end
+
   private
   def assert_rendered_pdf(output, screenshot:)
-    puts output.scan(/Warning:.+$/)
-    assert_match(/PDF d6ea82b9661e58030e99729d198a353a/, output)
+    assert_match(/PDF a0f29a2f4968123b2e931593605583c8/, output)
     page.save_screenshot screenshot, full: true
   end
 
