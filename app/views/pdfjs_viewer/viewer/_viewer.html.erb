@@ -43,6 +43,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <% end %>
     <%= javascript_include_tag "pdfjs_viewer/application" %>
     <%= javascript_tag "window.HOSTED_VIEWER_ORIGINS = #{PdfjsViewer.hosted_viewer_origins.to_json.html_safe};" %>
+    <%= javascript_tag "window.DISABLE_RANGE = #{PdfjsViewer.disable_range.to_json.html_safe};" %>
   </head>
 
   <body tabindex="1" class="loadingInProgress" id="pdfjs_viewer-<%= style %>">

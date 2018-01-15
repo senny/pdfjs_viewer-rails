@@ -7144,6 +7144,7 @@ window.PDFView = PDFViewerApplication; // obsolete name, using it as an alias
 
 var HOSTED_VIEWER_ORIGINS = ['null',
   'http://mozilla.github.io', 'https://mozilla.github.io'];
+var DISABLE_RANGE = false;
 function validateFileURL(file) {
   try {
     var viewerOrigin = new URL(window.location.href).origin || 'null';
@@ -7180,6 +7181,8 @@ function webViewerInitialized() {
   var params = parseQueryString(queryString);
   var file = 'file' in params ? params.file : DEFAULT_URL;
   validateFileURL(file);
+
+  PDFJS.disableRange = DISABLE_RANGE;
 
   var fileInput = document.createElement('input');
   fileInput.id = 'fileInput';
