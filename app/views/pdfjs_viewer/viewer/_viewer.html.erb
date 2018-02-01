@@ -342,6 +342,12 @@ See https://github.com/adobe-type-tools/cmap-resources
     page-break-after: always;
     page-break-inside: avoid;
   }
+  #outerContainer div {
+    display: none !important;
+  }
+  input{
+    display: none;
+  }
 }
   </style>
   <style scoped>
@@ -363,6 +369,9 @@ See https://github.com/adobe-type-tools/cmap-resources
 @media print {
   #mozPrintCallback-shim {
     display: none;
+  }
+  .mozPrintCallback-dialog-box{
+    display: none !important;
   }
 }
 
@@ -416,4 +425,11 @@ See https://github.com/adobe-type-tools/cmap-resources
 </div>
 
   </body>
+  <% if params[:print] %>
+    <script type="text/javascript">
+      $(window).load(function(){
+        window.print();
+      });
+    </script>
+  <% end %>
 </html>
