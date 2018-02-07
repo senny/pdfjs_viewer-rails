@@ -8,6 +8,9 @@ module PdfjsViewer
     def netsoft
     end
 
+    def netsoft_minimal
+    end
+
     def minimal
     end
   end
