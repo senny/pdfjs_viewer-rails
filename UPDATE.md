@@ -64,7 +64,9 @@ PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
 
 ## `app/assets/stylesheets/pdfjs_viewer/pdfjs/viewer.css`
 
-Replace all `url(images/` with `url(/pdfjs/web/images/`
+* Replace all `url(images/` with `url(/pdfjs/web/images/`
+* Replace all `url('images/` with `url('/pdfjs/web/images/`
+
 
 ## `app/views/pdfjs_viewer/viewer/_viewer.html.erb`
 
