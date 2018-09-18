@@ -84,6 +84,7 @@ at the top of the file before `<!DOCTYPE html>`
 Replace all children of `<head>` except the `<meta>` tags with
 ```html
 <%= render "pdfjs_viewer/viewer/head", title: title, pdf_url: pdf_url %>
+<%= render "pdfjs_viewer/viewer/extra_head", local_assigns %>
 ```
 
 ##

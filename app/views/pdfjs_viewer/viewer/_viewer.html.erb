@@ -29,6 +29,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <meta name="google" content="notranslate">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= render "pdfjs_viewer/viewer/head", title: title, pdf_url: pdf_url %>
+    <%= render "pdfjs_viewer/viewer/extra_head", local_assigns %>
   </head>
 
   <body tabindex="1" class="loadingInProgress">
