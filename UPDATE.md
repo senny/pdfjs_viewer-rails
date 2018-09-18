@@ -14,8 +14,6 @@ This guide describes how to update the pdf.js javascript library.
 │   │   │   └── pdfjs_viewer
 │   │   │       ├── application.js
 │   │   │       ├── pdfjs
-│   │   │       │   ├── compatibility.js *
-│   │   │       │   ├── l10n.js *
 │   │   │       │   └── pdf.js *
 │   │   │       ├── viewer.js *
 │   │   │       └── viewer_configurations.js
