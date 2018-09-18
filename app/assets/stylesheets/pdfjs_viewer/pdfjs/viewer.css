@@ -212,6 +212,7 @@
 .annotationLayer .underlineAnnotation,
 .annotationLayer .squigglyAnnotation,
 .annotationLayer .strikeoutAnnotation,
+.annotationLayer .lineAnnotation svg line,
 .annotationLayer .fileAttachmentAnnotation {
   cursor: pointer;
 }
@@ -229,7 +230,7 @@
   overflow: visible;
   border: 9px solid transparent;
   background-clip: content-box;
-  border-image: url(/pdfjs/web/images/shadow.png) 9 9 repeat;
+  border-image: url(images/shadow.png) 9 9 repeat;
   background-color: white;
 }
 
@@ -252,6 +253,10 @@
   display: block;
 }
 
+.pdfViewer .page canvas[hidden] {
+  display: none;
+}
+
 .pdfViewer .page .loadingIcon {
   position: absolute;
   display: block;
@@ -259,7 +264,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background: url('/pdfjs/web/images/loading-icon.gif') center no-repeat;
+  background: url('images/loading-icon.gif') center no-repeat;
 }
 
 .pdfPresentationMode:-webkit-full-screen .pdfViewer .page {
@@ -298,7 +303,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: #404040;
-  background-image: url(/pdfjs/web/images/texture.png);
+  background-image: url(images/texture.png);
 }
 
 body,
@@ -516,7 +521,7 @@ html[dir='rtl'] #viewerContainer {
   width: 200px;
   height: 32px;
   background-color: #424242; /* fallback */
-  background-image: url(/pdfjs/web/images/texture.png),
+  background-image: url(images/texture.png),
                     linear-gradient(hsla(0,0%,30%,.99), hsla(0,0%,25%,.95));
 }
 html[dir='ltr'] #toolbarSidebar {
@@ -536,7 +541,7 @@ html[dir='rtl'] #toolbarSidebar {
   position: relative;
   height: 32px;
   background-color: #474747; /* fallback */
-  background-image: url(/pdfjs/web/images/texture.png),
+  background-image: url(images/texture.png),
                     linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
 }
 html[dir='ltr'] #toolbarContainer, .findbar, .secondaryToolbar {
@@ -614,8 +619,7 @@ html[dir='rtl'] #toolbarContainer, .findbar, .secondaryToolbar {
   top: 32px;
   position: absolute;
   z-index: 10000;
-  height: 32px;
-
+  height: auto;
   min-width: 16px;
   padding: 0px 6px 0px 6px;
   margin: 4px 2px 4px 2px;
@@ -626,10 +630,21 @@ html[dir='rtl'] #toolbarContainer, .findbar, .secondaryToolbar {
   cursor: default;
 }
 
+.findbar {
+  min-width: 300px;
+}
+.findbar > div {
+  height: 32px;
+}
+.findbar.wrapContainers > div {
+  clear: both;
+}
+.findbar.wrapContainers > div#findbarMessageContainer {
+  height: auto;
+}
 html[dir='ltr'] .findbar {
   left: 68px;
 }
-
 html[dir='rtl'] .findbar {
   right: 68px;
 }
@@ -639,8 +654,23 @@ html[dir='rtl'] .findbar {
   -moz-user-select: none;
 }
 
+#findInput {
+  width: 200px;
+}
+#findInput::-webkit-input-placeholder {
+  font-style: italic;
+}
+#findInput::-moz-placeholder {
+  font-style: italic;
+}
+#findInput:-ms-input-placeholder {
+  font-style: italic;
+}
+#findInput::placeholder {
+  font-style: italic;
+}
 #findInput[data-status="pending"] {
-  background-image: url(/pdfjs/web/images/loading-small.png);
+  background-image: url(images/loading-small.png);
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -730,6 +760,9 @@ html[dir='ltr'] .doorHangerRight:before {
   font-style: italic;
   color: #A6B7D0;
 }
+#findMsg:empty {
+  display: none;
+}
 
 #findInput.notFound {
   background-color: rgb(255, 102, 102);
@@ -752,14 +785,14 @@ html[dir='rtl'] #toolbarViewerLeft {
 html[dir='ltr'] #toolbarViewerLeft > *,
 html[dir='ltr'] #toolbarViewerMiddle > *,
 html[dir='ltr'] #toolbarViewerRight > *,
-html[dir='ltr'] .findbar > * {
+html[dir='ltr'] .findbar * {
   position: relative;
   float: left;
 }
 html[dir='rtl'] #toolbarViewerLeft > *,
 html[dir='rtl'] #toolbarViewerMiddle > *,
 html[dir='rtl'] #toolbarViewerRight > *,
-html[dir='rtl'] .findbar > * {
+html[dir='rtl'] .findbar * {
   position: relative;
   float: right;
 }
@@ -801,10 +834,6 @@ html[dir='rtl'] .splitToolbarButton > .toolbarButton {
 .secondaryToolbarButton[disabled],
 .overlayButton[disabled] {
   opacity: .5;
-}
-
-.toolbarButton.group {
-  margin-right: 0;
 }
 
 .splitToolbarButton.toggled .toolbarButton {
@@ -994,7 +1023,7 @@ html[dir='rtl'] .dropdownToolbarButton {
   max-width: 120px;
   padding: 0;
   overflow: hidden;
-  background: url(/pdfjs/web/images/toolbarButton-menuArrows.png) no-repeat;
+  background: url(images/toolbarButton-menuArrows.png) no-repeat;
 }
 html[dir='ltr'] .dropdownToolbarButton {
   background-position: 95%;
@@ -1076,73 +1105,73 @@ html[dir="rtl"] .secondaryToolbarButton::before {
 }
 
 html[dir='ltr'] .toolbarButton#sidebarToggle::before {
-  content: url(/pdfjs/web/images/toolbarButton-sidebarToggle.png);
+  content: url(images/toolbarButton-sidebarToggle.png);
 }
 html[dir='rtl'] .toolbarButton#sidebarToggle::before {
-  content: url(/pdfjs/web/images/toolbarButton-sidebarToggle-rtl.png);
+  content: url(images/toolbarButton-sidebarToggle-rtl.png);
 }
 
 html[dir='ltr'] .toolbarButton#secondaryToolbarToggle::before {
-  content: url(/pdfjs/web/images/toolbarButton-secondaryToolbarToggle.png);
+  content: url(images/toolbarButton-secondaryToolbarToggle.png);
 }
 html[dir='rtl'] .toolbarButton#secondaryToolbarToggle::before {
-  content: url(/pdfjs/web/images/toolbarButton-secondaryToolbarToggle-rtl.png);
+  content: url(images/toolbarButton-secondaryToolbarToggle-rtl.png);
 }
 
 html[dir='ltr'] .toolbarButton.findPrevious::before {
-  content: url(/pdfjs/web/images/findbarButton-previous.png);
+  content: url(images/findbarButton-previous.png);
 }
 html[dir='rtl'] .toolbarButton.findPrevious::before {
-  content: url(/pdfjs/web/images/findbarButton-previous-rtl.png);
+  content: url(images/findbarButton-previous-rtl.png);
 }
 
 html[dir='ltr'] .toolbarButton.findNext::before {
-  content: url(/pdfjs/web/images/findbarButton-next.png);
+  content: url(images/findbarButton-next.png);
 }
 html[dir='rtl'] .toolbarButton.findNext::before {
-  content: url(/pdfjs/web/images/findbarButton-next-rtl.png);
+  content: url(images/findbarButton-next-rtl.png);
 }
 
 html[dir='ltr'] .toolbarButton.pageUp::before {
-  content: url(/pdfjs/web/images/toolbarButton-pageUp.png);
+  content: url(images/toolbarButton-pageUp.png);
 }
 html[dir='rtl'] .toolbarButton.pageUp::before {
-  content: url(/pdfjs/web/images/toolbarButton-pageUp-rtl.png);
+  content: url(images/toolbarButton-pageUp-rtl.png);
 }
 
 html[dir='ltr'] .toolbarButton.pageDown::before {
-  content: url(/pdfjs/web/images/toolbarButton-pageDown.png);
+  content: url(images/toolbarButton-pageDown.png);
 }
 html[dir='rtl'] .toolbarButton.pageDown::before {
-  content: url(/pdfjs/web/images/toolbarButton-pageDown-rtl.png);
+  content: url(images/toolbarButton-pageDown-rtl.png);
 }
 
 .toolbarButton.zoomOut::before {
-  content: url(/pdfjs/web/images/toolbarButton-zoomOut.png);
+  content: url(images/toolbarButton-zoomOut.png);
 }
 
 .toolbarButton.zoomIn::before {
-  content: url(/pdfjs/web/images/toolbarButton-zoomIn.png);
+  content: url(images/toolbarButton-zoomIn.png);
 }
 
 .toolbarButton.presentationMode::before,
 .secondaryToolbarButton.presentationMode::before {
-  content: url(/pdfjs/web/images/toolbarButton-presentationMode.png);
+  content: url(images/toolbarButton-presentationMode.png);
 }
 
 .toolbarButton.print::before,
 .secondaryToolbarButton.print::before {
-  content: url(/pdfjs/web/images/toolbarButton-print.png);
+  content: url(images/toolbarButton-print.png);
 }
 
 .toolbarButton.openFile::before,
 .secondaryToolbarButton.openFile::before {
-  content: url(/pdfjs/web/images/toolbarButton-openFile.png);
+  content: url(images/toolbarButton-openFile.png);
 }
 
 .toolbarButton.download::before,
 .secondaryToolbarButton.download::before {
-  content: url(/pdfjs/web/images/toolbarButton-download.png);
+  content: url(images/toolbarButton-download.png);
 }
 
 .toolbarButton.bookmark,
@@ -1165,26 +1194,44 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
 
 .toolbarButton.bookmark::before,
 .secondaryToolbarButton.bookmark::before {
-  content: url(/pdfjs/web/images/toolbarButton-bookmark.png);
+  content: url(images/toolbarButton-bookmark.png);
 }
 
 #viewThumbnail.toolbarButton::before {
-  content: url(/pdfjs/web/images/toolbarButton-viewThumbnail.png);
+  content: url(images/toolbarButton-viewThumbnail.png);
 }
 
 html[dir="ltr"] #viewOutline.toolbarButton::before {
-  content: url(/pdfjs/web/images/toolbarButton-viewOutline.png);
+  content: url(images/toolbarButton-viewOutline.png);
 }
 html[dir="rtl"] #viewOutline.toolbarButton::before {
-  content: url(/pdfjs/web/images/toolbarButton-viewOutline-rtl.png);
+  content: url(images/toolbarButton-viewOutline-rtl.png);
 }
 
 #viewAttachments.toolbarButton::before {
-  content: url(/pdfjs/web/images/toolbarButton-viewAttachments.png);
+  content: url(images/toolbarButton-viewAttachments.png);
 }
 
 #viewFind.toolbarButton::before {
-  content: url(/pdfjs/web/images/toolbarButton-search.png);
+  content: url(images/toolbarButton-search.png);
+}
+
+.toolbarButton.pdfSidebarNotification::after {
+  position: absolute;
+  display: inline-block;
+  top: 1px;
+  /* Create a filled circle, with a diameter of 9 pixels, using only CSS: */
+  content: '';
+  background-color: #70DB55;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+}
+html[dir='ltr'] .toolbarButton.pdfSidebarNotification::after {
+  left: 17px;
+}
+html[dir='rtl'] .toolbarButton.pdfSidebarNotification::after {
+  right: 17px;
 }
 
 .secondaryToolbarButton {
@@ -1220,27 +1267,31 @@ html[dir="rtl"] .secondaryToolbarButton > span {
 }
 
 .secondaryToolbarButton.firstPage::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-firstPage.png);
+  content: url(images/secondaryToolbarButton-firstPage.png);
 }
 
 .secondaryToolbarButton.lastPage::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-lastPage.png);
+  content: url(images/secondaryToolbarButton-lastPage.png);
 }
 
 .secondaryToolbarButton.rotateCcw::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-rotateCcw.png);
+  content: url(images/secondaryToolbarButton-rotateCcw.png);
 }
 
 .secondaryToolbarButton.rotateCw::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-rotateCw.png);
+  content: url(images/secondaryToolbarButton-rotateCw.png);
+}
+
+.secondaryToolbarButton.selectTool::before {
+  content: url(images/secondaryToolbarButton-selectTool.png);
 }
 
 .secondaryToolbarButton.handTool::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-handTool.png);
+  content: url(images/secondaryToolbarButton-handTool.png);
 }
 
 .secondaryToolbarButton.documentProperties::before {
-  content: url(/pdfjs/web/images/secondaryToolbarButton-documentProperties.png);
+  content: url(images/secondaryToolbarButton-documentProperties.png);
 }
 
 .verticalToolbarSeparator {
@@ -1301,7 +1352,7 @@ html[dir='rtl'] .verticalToolbarSeparator {
 }
 
 .toolbarField.pageNumber.visiblePageIsLoading {
-  background-image: url(/pdfjs/web/images/loading-small.png);
+  background-image: url(images/loading-small.png);
   background-repeat: no-repeat;
   background-position: 1px;
 }
@@ -1486,15 +1537,15 @@ html[dir='rtl'] .attachmentsItem > button {
   color: hsla(0,0%,100%,.5);
 }
 .outlineItemToggler::before {
-  content: url(/pdfjs/web/images/treeitem-expanded.png);
+  content: url(images/treeitem-expanded.png);
   display: inline-block;
   position: absolute;
 }
 html[dir='ltr'] .outlineItemToggler.outlineItemsHidden::before {
-  content: url(/pdfjs/web/images/treeitem-collapsed.png);
+  content: url(images/treeitem-collapsed.png);
 }
 html[dir='rtl'] .outlineItemToggler.outlineItemsHidden::before {
-  content: url(/pdfjs/web/images/treeitem-collapsed-rtl.png);
+  content: url(images/treeitem-collapsed-rtl.png);
 }
 .outlineItemToggler.outlineItemsHidden ~ .outlineItems {
   display: none;
@@ -1613,7 +1664,7 @@ html[dir='rtl'] .outlineItemToggler::before {
   font-size: 12px;
   line-height: 14px;
   background-color: #474747; /* fallback */
-  background-image: url(/pdfjs/web/images/texture.png),
+  background-image: url(images/texture.png),
                     linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
   box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
               inset 0 1px 1px hsla(0,0%,0%,.15),
@@ -1779,7 +1830,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
 }
 
 .grab-to-pan-grab {
-  cursor: url("/pdfjs/web/images/grab.cur"), move !important;
+  cursor: url("images/grab.cur"), move !important;
   cursor: -webkit-grab !important;
   cursor: -moz-grab !important;
   cursor: grab !important;
@@ -1789,7 +1840,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
 }
 .grab-to-pan-grab:active,
 .grab-to-pan-grabbing {
-  cursor: url("/pdfjs/web/images/grabbing.cur"), move !important;
+  cursor: url("images/grabbing.cur"), move !important;
   cursor: -webkit-grabbing !important;
   cursor: -moz-grabbing !important;
   cursor: grabbing !important;
@@ -1841,144 +1892,148 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
 
   .toolbarField.pageNumber.visiblePageIsLoading,
   #findInput[data-status="pending"] {
-    background-image: url(/pdfjs/web/images/loading-small@2x.png);
+    background-image: url(images/loading-small@2x.png);
     background-size: 16px 17px;
   }
 
   .dropdownToolbarButton {
-    background: url(/pdfjs/web/images/toolbarButton-menuArrows@2x.png) no-repeat;
+    background: url(images/toolbarButton-menuArrows@2x.png) no-repeat;
     background-size: 7px 16px;
   }
 
   html[dir='ltr'] .toolbarButton#sidebarToggle::before {
-    content: url(/pdfjs/web/images/toolbarButton-sidebarToggle@2x.png);
+    content: url(images/toolbarButton-sidebarToggle@2x.png);
   }
   html[dir='rtl'] .toolbarButton#sidebarToggle::before {
-    content: url(/pdfjs/web/images/toolbarButton-sidebarToggle-rtl@2x.png);
+    content: url(images/toolbarButton-sidebarToggle-rtl@2x.png);
   }
 
   html[dir='ltr'] .toolbarButton#secondaryToolbarToggle::before {
-    content: url(/pdfjs/web/images/toolbarButton-secondaryToolbarToggle@2x.png);
+    content: url(images/toolbarButton-secondaryToolbarToggle@2x.png);
   }
   html[dir='rtl'] .toolbarButton#secondaryToolbarToggle::before {
-    content: url(/pdfjs/web/images/toolbarButton-secondaryToolbarToggle-rtl@2x.png);
+    content: url(images/toolbarButton-secondaryToolbarToggle-rtl@2x.png);
   }
 
   html[dir='ltr'] .toolbarButton.findPrevious::before {
-    content: url(/pdfjs/web/images/findbarButton-previous@2x.png);
+    content: url(images/findbarButton-previous@2x.png);
   }
   html[dir='rtl'] .toolbarButton.findPrevious::before {
-    content: url(/pdfjs/web/images/findbarButton-previous-rtl@2x.png);
+    content: url(images/findbarButton-previous-rtl@2x.png);
   }
 
   html[dir='ltr'] .toolbarButton.findNext::before {
-    content: url(/pdfjs/web/images/findbarButton-next@2x.png);
+    content: url(images/findbarButton-next@2x.png);
   }
   html[dir='rtl'] .toolbarButton.findNext::before {
-    content: url(/pdfjs/web/images/findbarButton-next-rtl@2x.png);
+    content: url(images/findbarButton-next-rtl@2x.png);
   }
 
   html[dir='ltr'] .toolbarButton.pageUp::before {
-    content: url(/pdfjs/web/images/toolbarButton-pageUp@2x.png);
+    content: url(images/toolbarButton-pageUp@2x.png);
   }
   html[dir='rtl'] .toolbarButton.pageUp::before {
-    content: url(/pdfjs/web/images/toolbarButton-pageUp-rtl@2x.png);
+    content: url(images/toolbarButton-pageUp-rtl@2x.png);
   }
 
   html[dir='ltr'] .toolbarButton.pageDown::before {
-    content: url(/pdfjs/web/images/toolbarButton-pageDown@2x.png);
+    content: url(images/toolbarButton-pageDown@2x.png);
   }
   html[dir='rtl'] .toolbarButton.pageDown::before {
-    content: url(/pdfjs/web/images/toolbarButton-pageDown-rtl@2x.png);
+    content: url(images/toolbarButton-pageDown-rtl@2x.png);
   }
 
   .toolbarButton.zoomIn::before {
-    content: url(/pdfjs/web/images/toolbarButton-zoomIn@2x.png);
+    content: url(images/toolbarButton-zoomIn@2x.png);
   }
 
   .toolbarButton.zoomOut::before {
-    content: url(/pdfjs/web/images/toolbarButton-zoomOut@2x.png);
+    content: url(images/toolbarButton-zoomOut@2x.png);
   }
 
   .toolbarButton.presentationMode::before,
   .secondaryToolbarButton.presentationMode::before {
-    content: url(/pdfjs/web/images/toolbarButton-presentationMode@2x.png);
+    content: url(images/toolbarButton-presentationMode@2x.png);
   }
 
   .toolbarButton.print::before,
   .secondaryToolbarButton.print::before {
-    content: url(/pdfjs/web/images/toolbarButton-print@2x.png);
+    content: url(images/toolbarButton-print@2x.png);
   }
 
   .toolbarButton.openFile::before,
   .secondaryToolbarButton.openFile::before {
-    content: url(/pdfjs/web/images/toolbarButton-openFile@2x.png);
+    content: url(images/toolbarButton-openFile@2x.png);
   }
 
   .toolbarButton.download::before,
   .secondaryToolbarButton.download::before {
-    content: url(/pdfjs/web/images/toolbarButton-download@2x.png);
+    content: url(images/toolbarButton-download@2x.png);
   }
 
   .toolbarButton.bookmark::before,
   .secondaryToolbarButton.bookmark::before {
-    content: url(/pdfjs/web/images/toolbarButton-bookmark@2x.png);
+    content: url(images/toolbarButton-bookmark@2x.png);
   }
 
   #viewThumbnail.toolbarButton::before {
-    content: url(/pdfjs/web/images/toolbarButton-viewThumbnail@2x.png);
+    content: url(images/toolbarButton-viewThumbnail@2x.png);
   }
 
   html[dir="ltr"] #viewOutline.toolbarButton::before {
-    content: url(/pdfjs/web/images/toolbarButton-viewOutline@2x.png);
+    content: url(images/toolbarButton-viewOutline@2x.png);
   }
   html[dir="rtl"] #viewOutline.toolbarButton::before {
-    content: url(/pdfjs/web/images/toolbarButton-viewOutline-rtl@2x.png);
+    content: url(images/toolbarButton-viewOutline-rtl@2x.png);
   }
 
   #viewAttachments.toolbarButton::before {
-    content: url(/pdfjs/web/images/toolbarButton-viewAttachments@2x.png);
+    content: url(images/toolbarButton-viewAttachments@2x.png);
   }
 
   #viewFind.toolbarButton::before {
-    content: url(/pdfjs/web/images/toolbarButton-search@2x.png);
+    content: url(images/toolbarButton-search@2x.png);
   }
 
   .secondaryToolbarButton.firstPage::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-firstPage@2x.png);
+    content: url(images/secondaryToolbarButton-firstPage@2x.png);
   }
 
   .secondaryToolbarButton.lastPage::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-lastPage@2x.png);
+    content: url(images/secondaryToolbarButton-lastPage@2x.png);
   }
 
   .secondaryToolbarButton.rotateCcw::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-rotateCcw@2x.png);
+    content: url(images/secondaryToolbarButton-rotateCcw@2x.png);
   }
 
   .secondaryToolbarButton.rotateCw::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-rotateCw@2x.png);
+    content: url(images/secondaryToolbarButton-rotateCw@2x.png);
+  }
+
+  .secondaryToolbarButton.selectTool::before {
+    content: url(images/secondaryToolbarButton-selectTool@2x.png);
   }
 
   .secondaryToolbarButton.handTool::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-handTool@2x.png);
+    content: url(images/secondaryToolbarButton-handTool@2x.png);
   }
 
   .secondaryToolbarButton.documentProperties::before {
-    content: url(/pdfjs/web/images/secondaryToolbarButton-documentProperties@2x.png);
+    content: url(images/secondaryToolbarButton-documentProperties@2x.png);
   }
 
   .outlineItemToggler::before {
     -webkit-transform: scale(0.5);
     transform: scale(0.5);
     top: -1px;
-    content: url(/pdfjs/web/images/treeitem-expanded@2x.png);
+    content: url(images/treeitem-expanded@2x.png);
   }
   html[dir='ltr'] .outlineItemToggler.outlineItemsHidden::before {
-    content: url(/pdfjs/web/images/treeitem-collapsed@2x.png);
+    content: url(images/treeitem-collapsed@2x.png);
   }
   html[dir='rtl'] .outlineItemToggler.outlineItemsHidden::before {
-    content: url(/pdfjs/web/images/treeitem-collapsed-rtl@2x.png);
+    content: url(images/treeitem-collapsed-rtl@2x.png);
   }
   html[dir='ltr'] .outlineItemToggler::before {
     right: 0;
@@ -2147,7 +2202,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
 }
 
 @media all and (max-width: 640px) {
-  .hiddenSmallView {
+  .hiddenSmallView, .hiddenSmallView * {
     display: none;
   }
   .visibleSmallView {
@@ -2155,6 +2210,12 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   }
   .toolbarButtonSpacer {
     width: 0;
+  }
+  html[dir='ltr'] .findbar {
+    left: 38px;
+  }
+  html[dir='rtl'] .findbar {
+    right: 38px;
   }
 }
 
