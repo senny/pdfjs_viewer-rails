@@ -91,4 +91,16 @@ Replace all children of `<head>` except the `<meta>` tags with
 
 ##
 
+Replace this:
+```html
+  <body tabindex="1" class="loadingInProgress">
+```
+
+With this:
+```html
+  <body tabindex="1" class="loadingInProgress" id="pdfjs_viewer-<%= style %>">
+```
+
+##
+
 At the bottom of the file insert `<%= render "pdfjs_viewer/viewer/printcontainer" %>` after `<div id="printContainer"></div>`
