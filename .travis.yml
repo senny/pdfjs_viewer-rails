@@ -9,6 +9,6 @@ rvm:
   - 2.4.1
 
 gemfile:
-  - gemfiles/Gemfile.rails-4-2stable
-  - gemfiles/Gemfile.rails-5-0stable
-  - gemfiles/Gemfile.rails-5-1stable
+  - gemfiles/Gemfile.rails-4-2-stable
+  - gemfiles/Gemfile.rails-5-0-stable
+  - gemfiles/Gemfile.rails-5-1-stable
