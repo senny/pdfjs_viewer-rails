@@ -1,14 +1,12 @@
-module PdfjsViewer
-  class ViewerController < ApplicationController
-    layout false
+class PdfjsViewer::ViewerController < PdfjsViewer::ApplicationController
+  layout false
 
-    def full
-    end
+  def full
+  end
 
-    def minimal
-    end
-    
-    def reduced
-    end
+  def minimal
+  end
+
+  def reduced
   end
 end

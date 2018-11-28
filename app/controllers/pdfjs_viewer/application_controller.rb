@@ -1,4 +1,2 @@
-module PdfjsViewer
-  class ApplicationController < ActionController::Base
-  end
+class PdfjsViewer::ApplicationController < ActionController::Base
 end
