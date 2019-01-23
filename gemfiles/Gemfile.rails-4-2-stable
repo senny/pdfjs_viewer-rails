@@ -7,5 +7,6 @@ gem "rails", github: "rails/rails", branch: "4-2-stable"
 group :test do
   gem 'capybara', '>= 2.1'
   gem 'poltergeist', '~> 1.5'
+  gem 'puma'
   gem 'sqlite3'
 end
