@@ -1573,7 +1573,7 @@ var PDFViewerApplication = {
         initialParams.hash = hash;
         _this6.setInitialView(hash, {
           rotation: rotation,
-          sidebarView: sidebarView
+          sidebarView: _pdf_sidebar.SidebarView.THUMBS
         });
         if (!_this6.isViewerEmbedded) {
           pdfViewer.focus();
