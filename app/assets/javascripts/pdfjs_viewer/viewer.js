@@ -1886,7 +1886,14 @@ var PDFViewerApplication = {
 };
 var validateFileURL = void 0;
 {
-  var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io'];
+  var localDomain = function() {
+    var domain = location.protocol + '//' + location.hostname;
+    if (location.port !== "") {
+      domain += ":" + location.port
+    }
+    return domain
+  };
+  var HOSTED_VIEWER_ORIGINS = ['null', localDomain()];
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {
       return;
