@@ -73,6 +73,7 @@ class ViewerTest < ActionDispatch::IntegrationTest
           visit "/"
           click_on "full viewer"
         end
+        sleep @time_to_render
         assert_equal number, page.evaluate_script("PDFJS.verbosity")
       end
     ensure
