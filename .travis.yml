@@ -15,3 +15,7 @@ gemfile:
   - gemfiles/Gemfile.rails-5-0-stable
   - gemfiles/Gemfile.rails-5-1-stable
   - gemfiles/Gemfile.rails-5-2-stable
+
+before_install:
+    - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
+    - gem install bundler -v '< 2'
