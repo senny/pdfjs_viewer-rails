@@ -14,8 +14,6 @@ This guide describes how to update the pdf.js javascript library.
 │   │   │   └── pdfjs_viewer
 │   │   │       ├── application.js
 │   │   │       ├── pdfjs
-│   │   │       │   ├── compatibility.js *
-│   │   │       │   ├── l10n.js *
 │   │   │       │   └── pdf.js *
 │   │   │       ├── viewer.js *
 │   │   │       └── viewer_configurations.js
@@ -88,6 +86,11 @@ Replace all children of `<head>` except the `<meta>` tags with
 <%= render "pdfjs_viewer/viewer/head", title: title, pdf_url: pdf_url %>
 ```
 
+##
+Inject the correct styling class into the body classes.
+```html
+<body tabindex="1" class="loadingInProgress" id="pdfjs_viewer-<%= style %>">
+```
 ##
 
 At the bottom of the file insert `<%= render "pdfjs_viewer/viewer/printcontainer" %>` after `<div id="printContainer"></div>`
