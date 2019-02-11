@@ -66,6 +66,8 @@ PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
 
 Replace all `url(images/` with `url(/pdfjs/web/images/`
 
+Take extra care here as there are a few instances of inconsistent naming across pdf.js releases! For example the upgrade to 1.10.100 was not a trivial find and replace.
+
 ## `app/views/pdfjs_viewer/viewer/_viewer.html.erb`
 
 Replace the whole content of `app/views/pdfjs_viewer/viewer/_viewer.html.erb` with `web/viewer.html` from the new pdf.js release.
