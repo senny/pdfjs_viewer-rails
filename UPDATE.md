@@ -58,13 +58,17 @@ PDFJS.cMapUrl = '../web/cmaps/';
 with
 ``` javascript
 PDFJS.imageResourcesPath = '/pdfjs/web/images/';
-PDFJS.workerSrc = '/pdfjs/web/pdf.worker.js';
+PDFJS.workerSrc = '/pdfjs/web/pdf.worker.js?version=<version_number>';
 PDFJS.cMapUrl = '/pdfjs/web/cmaps/';
 ```
+
+The version is added as a query string above so we ensure users will get the matching version of the worker despite caching.
 
 ## `app/assets/stylesheets/pdfjs_viewer/pdfjs/viewer.css`
 
 Replace all `url(images/` with `url(/pdfjs/web/images/`
+
+Take extra care here as there are a few instances of inconsistent naming across pdf.js releases! For example the upgrade to 1.10.100 was not a trivial find and replace.
 
 ## `app/views/pdfjs_viewer/viewer/_viewer.html.erb`
 
