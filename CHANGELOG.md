@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Add a cache defeating per version query string to the pdf.worker.js
+
 ## 0.3.0
 
 - Update PDF.js to 1.10.100
