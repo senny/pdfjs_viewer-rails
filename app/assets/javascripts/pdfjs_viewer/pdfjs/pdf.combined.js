@@ -47904,7 +47904,7 @@ function include(filename, onload) {
   head.appendChild(script);
 }
 
-include('http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', function() {
+include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', function() {
   $(document).ready(function() {
 
     //GET PARAM QUERY FROM URL
