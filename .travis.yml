@@ -15,6 +15,7 @@ gemfile:
   - gemfiles/Gemfile.rails-5-0-stable
   - gemfiles/Gemfile.rails-5-1-stable
   - gemfiles/Gemfile.rails-5-2-stable
+  - gemfiles/Gemfile.rails-6-0-stable
 
 matrix:
   exclude:
