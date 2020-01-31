@@ -4234,7 +4234,7 @@ var defaultOptions = {
     kind: OptionKind.VIEWER + OptionKind.PREFERENCE
   },
   defaultUrl: {
-    value: 'compressed.tracemonkey-pldi-09.pdf',
+    value: window.resourceURL,
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
@@ -4372,7 +4372,7 @@ var defaultOptions = {
     kind: OptionKind.WORKER
   },
   workerSrc: {
-    value: '/pdfjs/web/pdf.worker.js',
+    value: '/pdfjs/web/pdf.worker.js?version=2.2.228',
     kind: OptionKind.WORKER
   }
 };
