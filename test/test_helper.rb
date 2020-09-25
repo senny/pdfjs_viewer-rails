@@ -15,8 +15,8 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
 end
 
+require 'capybara/apparition'
 require 'capybara/rails'
-require 'capybara/poltergeist'
 require "timeout"
 
 SANDBOX_PATH = Pathname.new(File.expand_path("sandbox", __dir__))
@@ -27,7 +27,7 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  Capybara.default_driver = :poltergeist
+  Capybara.default_driver = :apparition
 
   def teardown
     super

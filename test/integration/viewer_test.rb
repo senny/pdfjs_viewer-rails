@@ -83,8 +83,8 @@ class ViewerTest < ActionDispatch::IntegrationTest
 
   private
   def assert_rendered_pdf(output, screenshot:)
-    assert_match(/PDF a0f29a2f4968123b2e931593605583c8/, output)
     page.save_screenshot screenshot, full: true
+    assert_match(/PDF a0f29a2f4968123b2e931593605583c8/, output)
   end
 
   def capture(stream)
