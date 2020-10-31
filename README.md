@@ -147,10 +147,10 @@ tested on S3:
 Tests can be executed with:
 
 ```
-$ bundle exec rake
+$ bin/rake
 ```
 
-This will render the sample.pdf using phantomjs and save screenshots into `test/sandbox`.
+This will render the sample.pdf using headless chrome and save screenshots into `test/sandbox`.
 
 ## License
 

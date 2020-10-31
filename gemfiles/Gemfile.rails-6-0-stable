@@ -6,6 +6,6 @@ gem "rails", git: "https://github.com/rails/rails.git", branch: "6-0-stable"
 
 group :test do
   gem 'capybara', '>= 2.1'
-  gem 'poltergeist', '~> 1.5'
+  gem 'apparition'
   gem 'puma'
 end

@@ -15,6 +15,6 @@ gemspec
 
 group :test do
   gem 'capybara', '>= 2.1'
-  gem 'poltergeist', '~> 1.5'
+  gem 'apparition'
   gem 'puma'
 end
