@@ -72,20 +72,6 @@ an iframe.
 
 NOTE: The helper will render a full HTML document and should not be used in a layout.
 
-### Verbosity of PDF.js
-
-The verbosity of PDF.js can be set with:
-
-```
-$ export PDFJS_VIEWER_VERBOSITY=warnings
-```
-
-Verbosity levels:
-
-* errors (default)
-* warnings
-* infos
-
 ### Customizing the viewer
 
 If you're not happy with the 3 different styles with which pdfjs_viewer-rails is shipped, you can make your own adjustments by creating a file in `app/views/pdfjs_viewer/viewer/_extra_head.html.erb`. This file will be appended to the viewer's `<head>` tag.

@@ -1,4 +1,4 @@
-<meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors") %>">
+<meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors").upcase %>">
 <title><%= title %></title>
 
 <%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
