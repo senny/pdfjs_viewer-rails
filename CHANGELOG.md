@@ -1,3 +1,7 @@
+## Unreleased
+
+- Add support for Rails 6
+
 ## 0.3.1
 
 - Add a cache defeating per version query string to the pdf.worker.js
