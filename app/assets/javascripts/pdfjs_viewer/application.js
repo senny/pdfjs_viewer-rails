@@ -11,5 +11,4 @@
 // about supported directives.
 //
 //= require pdfjs_viewer/pdfjs/pdf
-//= require pdfjs_viewer/viewer_configurations
 //= require pdfjs_viewer/viewer

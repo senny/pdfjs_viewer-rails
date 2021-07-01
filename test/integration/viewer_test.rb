@@ -61,26 +61,6 @@ class ViewerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "pdfjs viewer verbosity is set with ENV variable" do
-    begin
-      {
-        errors: 0,
-        warnings: 1,
-        infos: 5
-      }.each do |level, number|
-        ENV["PDFJS_VIEWER_VERBOSITY"] = level.to_s
-        capture(:stdout) do
-          visit "/"
-          click_on "full viewer"
-        end
-        sleep @time_to_render
-        assert_equal number, page.evaluate_script("PDFJS.verbosity")
-      end
-    ensure
-      ENV.delete("PDFJS_VIEWER_VERBOSITY")
-    end
-  end
-
   private
   def assert_rendered_pdf(output, screenshot:)
     page.save_screenshot screenshot, full: true
