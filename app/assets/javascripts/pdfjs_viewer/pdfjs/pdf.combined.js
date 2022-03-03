@@ -47943,6 +47943,26 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
         }
       }
 
+      console.log('entraaa');     
+      var page = getUrlParameter('page');
+      if (page != undefined){
+        var sanitized_page= page.replace(/\+/g, ' ');
+        if (sanitized_page != ""){
+          //PREPARE PAGE VALUE
+          if (sanitized_page.indexOf('"') >= 0){
+            sanitized_page = sanitized_page.replace(/\"/g, '');
+          }
+          else{
+            sanitized_page = sanitized_page.split(' ')[0];
+          }
+          //FIND BAR VALUE SET TO QUERY INPUT
+          $("#pageNumber").val(sanitized_page);
+          //AUTO CLICK NEXT BUTTON
+          $("#pageNumber").trigger('click');
+        }
+      }
+
+
   });
 
 });
