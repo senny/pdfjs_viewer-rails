@@ -47942,8 +47942,7 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
           $("#findNext").trigger('click');
         }
       }
-
-      console.log('entraaa');     
+   
       var page = getUrlParameter('page');
       if (page != undefined){
         var sanitized_page= page.replace(/\+/g, ' ');
@@ -47956,6 +47955,7 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
             sanitized_page = sanitized_page.split(' ')[0];
           }
           //FIND BAR VALUE SET TO QUERY INPUT
+          console.log(sanitized_page);
           $("#pageNumber").val(sanitized_page);
           //AUTO CLICK NEXT BUTTON
           $("#pageNumber").trigger('click');
