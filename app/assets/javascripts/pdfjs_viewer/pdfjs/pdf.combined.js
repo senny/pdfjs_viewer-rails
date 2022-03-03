@@ -47946,13 +47946,12 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
       // decodeURIComponent(window.location.search.substring(1)).split('&')[1].split('=')[1]
       // var page = getUrlParameter('page');
       
-
-
       setTimeout(function() {
         console.log(window.location.search.substring(1).split('&')[1].split('=')[1]);
         if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined) {
           //FIND BAR VALUE SET TO QUERY INPUT
-          $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+          // $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+          $("#pageNumber").val("7");
           //AUTO CLICK NEXT BUTTON
           $("#pageNumber").trigger('click');
         }
