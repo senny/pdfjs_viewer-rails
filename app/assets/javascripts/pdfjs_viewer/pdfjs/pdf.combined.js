@@ -47949,7 +47949,7 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
       if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined){
         
         //FIND BAR VALUE SET TO QUERY INPUT
-        $("#pageNumber").val(page);
+        $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
         //AUTO CLICK NEXT BUTTON
         $("#pageNumber").trigger('click');
         
