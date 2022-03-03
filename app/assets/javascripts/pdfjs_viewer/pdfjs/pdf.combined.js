@@ -47943,16 +47943,16 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
         }
       }
    
-      var page = getUrlParameter('page');
-      console.log(page)
-      if (page != undefined){
-        if (page != ""){
-          //FIND BAR VALUE SET TO QUERY INPUT
-          console.log(page);
-          $("#pageNumber").val(page);
-          //AUTO CLICK NEXT BUTTON
-          $("#pageNumber").trigger('click');
-        }
+      // decodeURIComponent(window.location.search.substring(1)).split('&')[1].split('=')[1]
+      // var page = getUrlParameter('page');
+      console.log(window.location.search.substring(1).split('&')[1].split('=')[1])
+      if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined){
+        
+        //FIND BAR VALUE SET TO QUERY INPUT
+        $("#pageNumber").val(page);
+        //AUTO CLICK NEXT BUTTON
+        $("#pageNumber").trigger('click');
+        
       }
 
 
