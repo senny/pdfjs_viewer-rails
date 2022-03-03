@@ -47946,16 +47946,28 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
       // decodeURIComponent(window.location.search.substring(1)).split('&')[1].split('=')[1]
       // var page = getUrlParameter('page');
       
-      setTimeout(function() {
+      // setTimeout(function() {
         console.log(window.location.search.substring(1).split('&')[1].split('=')[1]);
         if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined) {
           //FIND BAR VALUE SET TO QUERY INPUT
           // $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
-          $("#pageNumber").val('7');
+          $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
           //AUTO CLICK NEXT BUTTON
           $("#pageNumber").trigger('keypress');
         }
-      }, 5000);
+      // }, 5000);
+
+
+      // $('#pageNumber').on('focus', function(e) {
+      //     var elem = e.target.value
+      //     setTimeout(function(){
+      //       $("#pageNumber").trigger('keypress');   elem.get(0).setSelectionRange(0,0,0);
+      //     },100);
+      // });
+
+      // $('#pageNumber').addEventListener("focus", function(e){
+      //   alert(e.target.value)
+      // })
 
       
 
