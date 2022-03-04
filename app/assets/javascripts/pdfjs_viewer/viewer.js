@@ -7987,3 +7987,20 @@ window.addEventListener('afterprint', function afterPrint(evt) {
     window.requestAnimationFrame(resolve);
   });
 })();
+
+$(document).ready(function() {
+  console.log(window.location.search.substring(1).split('&')[1].split('=')[1]);
+    if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined) {
+      //FIND BAR VALUE SET TO QUERY INPUT
+      // $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+      $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+      //AUTO CLICK NEXT BUTTON
+      //$("#pageNumber").trigger('keypress');
+
+      var e = $.Event( "keyup", { keyCode: 13 } );
+      $('#pageNumber').trigger(e);
+
+    }
+
+});
+
