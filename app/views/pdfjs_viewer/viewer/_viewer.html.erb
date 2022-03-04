@@ -427,9 +427,27 @@ See https://github.com/adobe-type-tools/cmap-resources
   </body>
   <% if params[:print] %>
     <script type="text/javascript">
-      $(window).load(function(){
+      $(window).load(function() {
         window.print();
       });
+
+      $(document).ready(function() {
+        console.log(window.location.search.substring(1).split('&')[1].split('=')[1]);
+          if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined) {
+            //FIND BAR VALUE SET TO QUERY INPUT
+            // $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+            $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
+            //AUTO CLICK NEXT BUTTON
+            //$("#pageNumber").trigger('keypress');
+
+            var e = $.Event( "keyup", { keyCode: 13 } );
+            $('#pageNumber').trigger(e);
+
+          }
+
+      });
+
+
     </script>
   <% end %>
 </html>
