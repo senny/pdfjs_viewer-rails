@@ -47931,9 +47931,10 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
           if (sanitized_query.indexOf('"') >= 0){
             sanitized_query = sanitized_query.replace(/\"/g, '');
           }
-          else{
+          else {
             sanitized_query = sanitized_query.split(' ')[0];
           }
+
           //FIND BAR VALUE SET TO QUERY INPUT
           $("#findInput").val(sanitized_query);
           //REMOVE HIDDEN CLASS FROM FIND BAR
@@ -47943,35 +47944,23 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
         }
       }
    
-      // decodeURIComponent(window.location.search.substring(1)).split('&')[1].split('=')[1]
-      // var page = getUrlParameter('page');
-      
-      // setTimeout(function() {
-        // console.log(window.location.search.substring(1).split('&')[1].split('=')[1]);
-        // if (window.location.search.substring(1).split('&')[1].split('=')[1] != undefined) {
-        //   //FIND BAR VALUE SET TO QUERY INPUT
-        //   // $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
-        //   $("#pageNumber").val(window.location.search.substring(1).split('&')[1].split('=')[1]);
-        //   //AUTO CLICK NEXT BUTTON
-        //   $("#pageNumber").trigger('keypress');
-        // }
-      // }, 5000);
+      var pageURL = $(location).attr("href");
+      var page = pageURL.split("page")[1].substring(3,4);
+      //var doc = pageURL.split("doc")[3].substring(3,6);
 
-
-      // $('#pageNumber').on('focus', function(e) {
-      //     var elem = e.target.value
-      //     setTimeout(function(){
-      //       $("#pageNumber").trigger('keypress');   elem.get(0).setSelectionRange(0,0,0);
-      //     },100);
-      // });
-
-      // $('#pageNumber').addEventListener("focus", function(e){
-      //   alert(e.target.value)
-      // })
+      $(window).load(function() {
+        if (page != undefined) {
+          setTimeout(function() {
+            $('a[href="#page=' + page + '"]').trigger('click');
+          }, 1000);  
+        }
+      });
 
       
 
+     
 
+     
   });
 
 });
