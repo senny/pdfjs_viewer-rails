@@ -47961,19 +47961,17 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
 
       console.log(page)
 
-      $(window).load(function() {
-        if (page != undefined) {
-          setTimeout(function() {
+      //Comprueba cada segundo si esta cargando el documento, cuando ya no esté cargando, ejecute el clic hacia la
+      // página en concreto
+      if (page != undefined) {
+        var isLoading = document.getElementsByClassName('loadingInProgress');
+        var interval = setInterval(function() {
+           if (isLoading.length == 0) {
             $('a[href="#page=' + page + '"]').trigger('click');
-          }, 2000);  
-        }
-      });
-
-      
-
-     
-
-     
+            clearInterval(interval);
+           }
+         }, 1000);
+      }
   });
 
 });
