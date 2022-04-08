@@ -47959,7 +47959,7 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
       }
       //var doc = pageURL.split("doc")[3].substring(3,6);
 
-      console.log(page)
+      console.log(page);
 
       //Comprueba cada segundo si esta cargando el documento, cuando ya no esté cargando, ejecute el clic hacia la
       // página en concreto
@@ -47967,10 +47967,10 @@ include('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', func
         var isLoading = document.getElementsByClassName('loadingInProgress');
         var interval = setInterval(function() {
            if (isLoading.length == 0) {
-            $('a[href="#page=' + page + '"]').trigger('click');
             clearInterval(interval);
+            $('a[href="#page=' + page + '"]').trigger('click');          
            }
-         }, 1000);
+         }, 2000);
       }
   });
 
