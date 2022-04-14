@@ -1,6 +1,8 @@
 <meta name="pdfjs_viewer_verbosity" content="<%= ENV.fetch("PDFJS_VIEWER_VERBOSITY", "errors") %>">
 <title><%= title %></title>
 
+<%= render "pdfjs_viewer/viewer/before_load", local_assigns %>
+
 <%= stylesheet_link_tag "pdfjs_viewer/application", media: "all" %>
 
 <!-- This snippet is used in production (included from viewer.html) -->
