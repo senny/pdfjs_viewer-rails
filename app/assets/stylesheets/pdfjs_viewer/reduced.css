@@ -1,0 +1,24 @@
+#pdfjs_viewer-reduced .openFile {
+  display: none;
+}
+#pdfjs_viewer-reduced .bookmark {
+  display: none;
+}
+#pdfjs_viewer-reduced #viewThumbnail {
+  display: none;
+}
+#pdfjs_viewer-reduced #viewOutline {
+  display: none;
+}
+#pdfjs_viewer-reduced #viewAttachments {
+  display: none;
+}
+#pdfjs_viewer-reduced #download {
+  display: none;
+}
+#pdfjs_viewer-reduced #secondaryToolbarToggle {
+  display: none;
+}
+#pdfjs_viewer-reduced #toolbarViewerRight div.verticalToolbarSeparator {
+  display: none;
+}
