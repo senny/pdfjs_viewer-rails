@@ -1,0 +1,41 @@
+#pdfjs_viewer-minimal div.toolbar {
+  display: none;
+}
+#pdfjs_viewer-minimal #scaleSelectContainer {
+  display: none;
+}
+#pdfjs_viewer-minimal #secondaryToolbarToggle {
+  display: none;
+}
+#pdfjs_viewer-minimal #toolbarViewerLeft {
+  display: none;
+}
+#pdfjs_viewer-minimal #toolbarViewerRight {
+  display: none;
+}
+#pdfjs_viewer-minimal #viewFind {
+  display: none;
+}
+#pdfjs_viewer-minimal #viewAttachments {
+  display: none;
+}
+#pdfjs_viewer-minimal .openFile {
+  display: none;
+}
+#pdfjs_viewer-minimal .download {
+  display: none;
+}
+#pdfjs_viewer-minimal .bookmark {
+  display: none;
+}
+#pdfjs_viewer-minimal .secondaryToolbar {
+  display: none;
+}
+#pdfjs_viewer-minimal #viewerContainer, #pdfjs_viewer-minimal #mainContainer {
+  background-color: white;
+  top: 0px;
+}
+#pdfjs_viewer-minimal #toolbarContainer {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
