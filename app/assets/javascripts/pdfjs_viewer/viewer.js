@@ -1189,7 +1189,7 @@ var PDFFindController = (function PDFFindControllerClosure() {
 
     calcFindMatch: function PDFFindController_calcFindMatch(pageIndex) {
       var pageContent = this.normalize(this.pageContents[pageIndex]);
-      var query = this.normalize(this.state.query);
+      var query = this.normalize(this.state.query).replaceAll(' ','');
       var caseSensitive = this.state.caseSensitive;
       var queryLen = query.length;
 
@@ -4197,8 +4197,9 @@ var TextLayerBuilder = (function TextLayerBuilderClosure() {
       var iIndex = 0;
       var bidiTexts = this.textContent.items;
       var end = bidiTexts.length - 1;
+      var queryCleaned = this.findController.state.query.replaceAll(' ','')
       var queryLen = (this.findController === null ?
-                      0 : this.findController.state.query.length);
+                      0 : queryCleaned.length);
       var ret = [];
 
       for (var m = 0, len = matches.length; m < len; m++) {
